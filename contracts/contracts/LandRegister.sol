@@ -78,27 +78,39 @@ contract LandRegister is  Ownable{
     }
     
     function getLands(address payable _owner) public view returns(Land[] memory){
-        Land[] memory landsOfUser = new Land[](landCount);
-        uint count = 0;
-        for(uint i = 1; i <= landCount; i++){
+        uint256 count = 0;
+        for(uint i = 1; i<=landCount; i++){
             if(lands[i].owner == _owner){
-                landsOfUser[count] = lands[i];
                 count++;
+            }
+        }
+        Land[] memory landsOfUser = new Land[](count);
+        uint256 j = 0;
+        for(uint i = 1; i<=landCount; i++){
+            if(lands[i].owner == _owner){
+                landsOfUser[j] = lands[i];
+                j++;
             }
         }
         return landsOfUser;
     }
 
-     function getListedLand() public view returns(Land[] memory){
-        Land[] memory landsOfUser = new Land[](landCount);
-        uint count = 0;
-        for(uint i = 1; i <= landCount; i++){
+    function getListedLand() public view returns(Land[] memory){
+        uint256 count = 0;
+        for(uint i = 1; i<=landCount; i++){
             if(lands[i].isListed == true){
-                landsOfUser[count] = lands[i] ;
                 count++;
             }
         }
-        return landsOfUser;
+        Land[] memory listedLands = new Land[](count);
+        uint256 j = 0;
+        for(uint i = 1; i<=landCount; i++){
+            if(lands[i].isListed == true){
+                listedLands[j] = lands[i];
+                j++;
+            }
+        }
+        return listedLands;
     }
 
 

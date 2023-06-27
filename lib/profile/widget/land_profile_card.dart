@@ -81,7 +81,7 @@ class LandProfileCard extends StatelessWidget {
                     height: 16,
                   ),
                   Text(
-                    'Price Per Unit: $pricePerUnit MATIC',
+                    'Price Per Unit: $pricePerUnit WMATIC',
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.green,
